@@ -1,0 +1,633 @@
+<!--
+  ============================================================
+  HOW TO USE YOUR OWN IMAGES (drawables)
+  ============================================================
+  1. Create a folder named "images" next to this HTML file.
+  2. Drop your files in there using these exact names:
+       images/logo.png          -> header logo (only used if your
+                                    original hosted logo URL fails)
+       images/hero-1.jpg        -> hero slider, slide 1
+       images/hero-2.jpg        -> hero slider, slide 2
+       images/hero-3.jpg        -> hero slider, slide 3
+       images/about-team.jpg    -> photo on the About Us section
+       images/management.jpg    -> Team Leader / management photo
+       images/team/<name>.jpg   -> each associate consultant's photo
+                                   (see the list printed in the
+                                   browser console, or just match
+                                   the person's name in lowercase
+                                   with hyphens, e.g. "oscar-langat.jpg")
+  3. Refresh the page. Missing a file? The site quietly falls
+     back to a placeholder photo instead of showing a broken icon.
+  Want different file names or a URL instead? Just search this
+  file for "images/" and change the paths.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Esquire Consultants | The Quest to Make a Distinction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "outline-variant": "#c1c7d1", "secondary-fixed": "#78fc9c", "on-secondary-fixed": "#00210b",
+                    "tertiary-fixed-dim": "#ffb781", "tertiary-container": "#894600", "outline": "#717781",
+                    "on-background": "#191c20", "surface-container-low": "#f2f3f9", "surface-variant": "#e1e2e8",
+                    "surface-container-highest": "#e1e2e8", "surface-container-high": "#e7e8ed",
+                    "on-secondary-container": "#007236", "on-tertiary-container": "#ffc295",
+                    "on-surface-variant": "#414750", "surface-tint": "#12629d", "whatsapp-green": "#25D366",
+                    "surface-container-lowest": "#ffffff", "secondary": "#006d33", "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#2f1400", "on-primary-fixed-variant": "#00497a", "inverse-primary": "#9ccaff",
+                    "on-secondary": "#ffffff", "inverse-surface": "#2e3135", "on-primary-container": "#abd2ff",
+                    "inverse-on-surface": "#eff0f6", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#703800",
+                    "on-primary": "#ffffff", "primary-fixed": "#d0e4ff", "error": "#ba1a1a", "on-error": "#ffffff",
+                    "primary-fixed-dim": "#9ccaff", "on-primary-fixed": "#001d35", "tertiary": "#663300",
+                    "surface-container": "#eceef3", "on-secondary-fixed-variant": "#005225",
+                    "secondary-container": "#75f999", "on-surface": "#191c20", "surface-dim": "#d8dadf",
+                    "secondary-fixed-dim": "#5adf82", "surface": "#f8f9ff", "primary-container": "#005b96",
+                    "on-tertiary": "#ffffff", "tertiary-fixed": "#ffdcc4", "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9ff", "primary": "#004370"
+                },
+                "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                "spacing": { "base": "8px", "section-mobile": "40px", "section-desktop": "80px", "container-max": "1280px", "gutter": "24px" },
+                "fontFamily": { "headline-md": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "display-lg-mobile": ["Inter"], "caption": ["Inter"], "display-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"] },
+                "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                }
+            }
+        }
+    }
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .hover-lift { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0, 109, 51, 0.14); }
+    .ambient-shadow { box-shadow: 0 4px 12px rgba(0, 91, 150, 0.08); }
+    .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Horizontal marquee — the "unique" scroll direction lives here */
+    .marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+    .marquee-track { display: flex; width: max-content; animation: scrollX 34s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-track.marquee-reverse { animation-direction: reverse; }
+    @keyframes scrollX { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .tab-btn.active { background: #004370; color: #fff; }
+    .tab-btn.active .tab-count { background: rgba(255,255,255,0.2); color: #fff; }
+    .nav-link.active { color: #004370; font-weight: 700; border-bottom: 2px solid #004370; }
+
+    /* Hero slider */
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide::after { content: ""; position: absolute; inset: 0; background: rgba(10,20,30,0.55); }
+    .hero-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.4); cursor: pointer; transition: all .3s ease; }
+    .hero-dot.active { width: 26px; background: #78fc9c; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+
+<!-- Header / Navigation -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-base md:px-gutter max-w-container-max mx-auto bg-surface/95 backdrop-blur-sm border-b border-outline-variant/30 shadow-sm">
+    <div class="flex items-center gap-4 py-3">
+        <div class="flex items-center gap-3">
+            <div class="relative w-11 h-11 shrink-0">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkidTCeivR6GuHOzaYYek8aY4lFJT7wYQxh06tiGB7S8j6uWGQ7mAU9dTvdH_QpYsDwqIc1wzVBDo1zuWsNRMs09vvpXmVoOdnInI8Y8dNngFKYSUsdxlt1bGDuhUe0F67IaCVPXD465Et72U0TGzzVOAvKGFReBEfiqbIJNTjvAlxIBXRe_EPaI_dUpfAv3iGEpu0CTivbY_b4Fb9AaOLYXT6Wui9LYrjjEMIJK8_mqA3upQJQerjtH1yyvSkUQvzWRPB4AKwIg"
+                     alt="Esquire Consultants logo" class="w-11 h-11 rounded-full object-cover bg-white p-0.5"
+                     onerror="if(this.dataset.step!=='local'){this.dataset.step='local';this.src='images/logo.png';}else{this.style.display='none';document.getElementById('logo-fallback').classList.remove('hidden');}">
+                <div id="logo-fallback" class="hidden absolute inset-0 rounded-full bg-primary flex items-center justify-center text-white font-black text-lg">EC</div>
+            </div>
+            <div class="hidden md:flex flex-col leading-none">
+                <span class="font-headline-md text-headline-md font-bold text-primary leading-tight">Esquire Consultants</span>
+                <span class="text-[10px] uppercase tracking-tighter text-secondary font-bold mt-1">NITA Accredited Provider · TRN/2632</span>
+            </div>
+        </div>
+    </div>
+    <nav class="hidden md:flex items-center gap-7 font-label-md text-label-md" id="topnav">
+        <a data-target="home" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">Home</a>
+        <a data-target="about" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">About Us</a>
+        <a data-target="services" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">Services</a>
+        <a data-target="training" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">Training</a>
+        <a data-target="clients" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">Clients</a>
+        <a data-target="team" class="nav-link text-on-surface-variant hover:text-primary pb-1 transition-colors duration-200 cursor-pointer">Team</a>
+    </nav>
+    <div class="flex items-center gap-base py-3">
+        <button onclick="jump('contact')" class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">Contact</button>
+        <button class="md:hidden text-primary" onclick="document.getElementById('mobilenav').classList.toggle('hidden')">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+    <div id="mobilenav" class="hidden absolute top-full left-0 right-0 bg-surface border-b border-outline-variant/30 flex flex-col md:hidden">
+        <a data-target="home" class="nav-link px-6 py-3 border-b border-outline-variant/10">Home</a>
+        <a data-target="about" class="nav-link px-6 py-3 border-b border-outline-variant/10">About Us</a>
+        <a data-target="services" class="nav-link px-6 py-3 border-b border-outline-variant/10">Services</a>
+        <a data-target="training" class="nav-link px-6 py-3 border-b border-outline-variant/10">Training</a>
+        <a data-target="clients" class="nav-link px-6 py-3 border-b border-outline-variant/10">Clients</a>
+        <a data-target="team" class="nav-link px-6 py-3 border-b border-outline-variant/10">Team</a>
+        <a data-target="contact" class="nav-link px-6 py-3">Contact</a>
+    </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="relative h-[80vh] min-h-[560px] flex items-center overflow-hidden">
+    <div id="hero-slider" class="absolute inset-0 z-0 bg-primary"></div>
+    <div class="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2" id="hero-dots"></div>
+    <div class="relative z-10 max-w-container-max mx-auto px-gutter w-full fade-in-up">
+        <div class="max-w-2xl text-white">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded mb-6">
+                <span class="material-symbols-outlined text-secondary-fixed text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                <span class="font-label-md tracking-widest uppercase">NITA Accredited · Ref NITA/TRN/2632</span>
+            </div>
+            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">The Quest to Make a <span class="text-secondary-fixed">Distinction.</span></h1>
+            <p class="font-body-lg text-body-lg mb-8 text-surface-variant">Empowering Kenyan institutions since 2008 through authoritative HR advisory, strategic leadership governance, and world-class capacity building.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button onclick="jump('contact')" class="bg-secondary text-on-secondary px-8 py-4 rounded font-label-md text-lg active:scale-95 transition-transform">Book a Consultation</button>
+                <button onclick="jump('training')" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded font-label-md text-lg hover:bg-white/20 transition-all">Our Training Programs</button>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce">
+        <span class="material-symbols-outlined">expand_more</span>
+    </div>
+</section>
+
+<!-- ACCREDITATION STRIP -->
+<section class="py-section-mobile md:py-10 bg-surface-container">
+    <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-base">
+        <div class="flex items-center gap-6">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center ambient-shadow text-primary">
+                <span class="material-symbols-outlined text-3xl">verified</span>
+            </div>
+            <div>
+                <h4 class="font-headline-md text-primary">NITA Accredited</h4>
+                <p class="text-on-surface-variant">Official Training Provider · Ref NITA/TRN/2632</p>
+            </div>
+        </div>
+        <div class="h-px w-full md:w-px md:h-12 bg-outline-variant/30 hidden md:block"></div>
+        <div class="flex gap-12 text-center md:text-left">
+            <div>
+                <div class="font-headline-lg text-primary">18+</div>
+                <div class="font-label-md text-on-surface-variant uppercase">Years, Since 2008</div>
+            </div>
+            <div>
+                <div class="font-headline-lg text-primary">200+</div>
+                <div class="font-label-md text-on-surface-variant uppercase">Combined Consultant Years</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-section-desktop bg-surface-container-low">
+    <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+        <div class="relative">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden ambient-shadow bg-surface-container">
+                <img class="w-full h-full object-cover" alt="Team meeting" src="images/about-team.jpg"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80';">
+            </div>
+            <div class="absolute -bottom-8 -right-6 bg-primary p-6 rounded-xl text-white hidden lg:block ambient-shadow max-w-[220px]">
+                <span class="material-symbols-outlined text-3xl mb-3">format_quote</span>
+                <p class="font-body-md italic mb-3 text-sm">"Our mission is to cultivate leadership that transforms organizations."</p>
+                <p class="font-label-md font-bold text-xs">— Alex Musau, Team Leader</p>
+            </div>
+        </div>
+        <div>
+            <span class="text-secondary font-label-md uppercase tracking-widest mb-3 block">Who We Are</span>
+            <h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg mb-5 text-on-background">A Boutique Consultancy Built on 18 Years of Practice</h2>
+            <p class="text-on-surface-variant font-body-lg mb-4">Esquire Consultants is an established Training, HR and Management Consultancy provider based in Nairobi, Kenya. We solve real organizational challenges through cutting-edge, innovative consultancy that provokes a new way of doing things.</p>
+            <p class="text-on-surface-variant font-body-md mb-6">Started in 2008 in Thika town, the firm converted to a Limited Company in 2014 to expand its scope across public sector, NGO and corporate clientele — growing our service menu into Talent Search &amp; Placement, HR Advisory, Surveys &amp; Research, Career Advisory and Governance &amp; Leadership Consultancy.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white rounded-lg p-5 border border-outline-variant/10">
+                    <h4 class="font-headline-md text-base text-primary mb-1">Our Vision</h4>
+                    <p class="text-sm text-on-surface-variant">To be the premier consultancy services provider in the region.</p>
+                </div>
+                <div class="bg-white rounded-lg p-5 border border-outline-variant/10">
+                    <h4 class="font-headline-md text-base text-primary mb-1">Our Mission</h4>
+                    <p class="text-sm text-on-surface-variant">To provide distinctive consultancy services that make a positive impact in the lives of those we interact with.</p>
+                </div>
+            </div>
+
+            <h4 class="font-label-md uppercase tracking-widest text-on-surface-variant mb-3">Core Values</h4>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Customer Focus</span>
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Integrity</span>
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Transparency</span>
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Innovation</span>
+                <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Community Service</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-section-desktop bg-white">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="text-center mb-12">
+            <span class="text-secondary font-label-md uppercase tracking-widest mb-3 block">Our Expertise</span>
+            <h2 class="font-headline-lg text-primary">The Esquire Service Buffet</h2>
+            <p class="text-on-surface-variant max-w-xl mx-auto mt-3">A well-rounded, cross-sectoral offering built to solve real organizational challenges.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-base mb-10">
+            <div class="bg-surface-container-low p-7 rounded-xl border border-outline-variant/10 hover-lift flex flex-col items-start h-full">
+                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
+                    <span class="material-symbols-outlined text-2xl">model_training</span>
+                </div>
+                <h3 class="font-headline-md text-lg mb-2">Training &amp; Capacity Building</h3>
+                <p class="text-on-surface-variant text-sm">Certified technical and soft-skill programs, including Team Building and Development Solutions.</p>
+            </div>
+            <div class="bg-surface-container-low p-7 rounded-xl border border-outline-variant/10 hover-lift flex flex-col items-start h-full">
+                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-4">
+                    <span class="material-symbols-outlined text-2xl">groups</span>
+                </div>
+                <h3 class="font-headline-md text-lg mb-2">HR Advisory &amp; Talent</h3>
+                <p class="text-on-surface-variant text-sm">Talent search, executive selection and career placement, plus HR support and industrial relations compliance.</p>
+            </div>
+            <div class="bg-surface-container-low p-7 rounded-xl border border-outline-variant/10 hover-lift flex flex-col items-start h-full">
+                <div class="w-12 h-12 bg-tertiary-container/10 rounded-lg flex items-center justify-center text-tertiary mb-4">
+                    <span class="material-symbols-outlined text-2xl">account_balance</span>
+                </div>
+                <h3 class="font-headline-md text-lg mb-2">Leadership &amp; Governance</h3>
+                <p class="text-on-surface-variant text-sm">Career advisory, coaching and management services strengthening board and executive effectiveness.</p>
+            </div>
+        </div>
+
+        <div id="service-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+    </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training" class="py-section-desktop bg-surface-container-low">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="text-center mb-10">
+            <span class="text-secondary font-label-md uppercase tracking-widest mb-3 block">Training &amp; Capacity Building</span>
+            <h2 class="font-headline-lg text-primary">Focal Area Streams</h2>
+            <p class="text-on-surface-variant max-w-xl mx-auto mt-3">Eight streams of applied programs. Select a stream to see its curriculum.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 justify-center mb-8" id="stream-tabs"></div>
+        <div id="stream-panel" class="bg-white rounded-xl border border-outline-variant/10 p-8 max-w-3xl mx-auto ambient-shadow min-h-[200px]"></div>
+    </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" class="py-section-desktop bg-white overflow-hidden">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="text-center mb-10">
+            <span class="text-secondary font-label-md uppercase tracking-widest mb-3 block">Proven Track Record</span>
+            <h2 class="font-headline-lg text-primary">Trusted Across Sectors</h2>
+            <p class="text-on-surface-variant max-w-xl mx-auto mt-3">Partnering with organizations across government, non-governmental and private sectors, locally and globally.</p>
+        </div>
+    </div>
+
+    <!-- horizontal scrolling marquee -->
+    <div class="relative w-full overflow-hidden h-16 flex items-center mb-4 marquee-mask">
+        <div class="marquee-track gap-4" id="sector-marquee-1"></div>
+    </div>
+    <div class="relative w-full overflow-hidden h-16 flex items-center mb-14 marquee-mask">
+        <div class="marquee-track marquee-reverse gap-4" id="sector-marquee-2"></div>
+    </div>
+
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-base mb-14">
+            <div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+                <span class="material-symbols-outlined text-primary mb-3">domain</span>
+                <h4 class="font-headline-md text-base mb-2">Government &amp; Public Sector</h4>
+                <p class="text-sm text-on-surface-variant">County Governments, County Assemblies, Parastatals, Regulatory Bodies, Water &amp; Sanitation Companies, Public Universities, Schools.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+                <span class="material-symbols-outlined text-secondary mb-3">volunteer_activism</span>
+                <h4 class="font-headline-md text-base mb-2">Non-Governmental Sector</h4>
+                <p class="text-sm text-on-surface-variant">International NGOs, Humanitarian NGOs, Community Development NGOs, Agri-related NGOs, Civic &amp; Human Rights NGOs.</p>
+            </div>
+            <div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant/10">
+                <span class="material-symbols-outlined text-tertiary mb-3">factory</span>
+                <h4 class="font-headline-md text-base mb-2">Private &amp; Corporate Sector</h4>
+                <p class="text-sm text-on-surface-variant">FMCGs, Manufacturing, Agribusinesses, Services, Banking &amp; Finance, Insurance, Motoring, Construction, Distribution.</p>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="font-label-md uppercase tracking-widest text-on-surface-variant mb-5 text-center">Why Esquire Consultants</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-4">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">handshake</span>
+                    <p class="text-sm text-on-surface-variant">Long-term perspective in relationship building</p>
+                </div>
+                <div class="text-center p-4">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">rule</span>
+                    <p class="text-sm text-on-surface-variant">Capacity to benchmark with best practice</p>
+                </div>
+                <div class="text-center p-4">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">diversity_3</span>
+                    <p class="text-sm text-on-surface-variant">Diverse expert team of associates &amp; trainers</p>
+                </div>
+                <div class="text-center p-4">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-2">route</span>
+                    <p class="text-sm text-on-surface-variant">Robust training &amp; consultancy methodology</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="py-section-desktop bg-surface-container-low">
+    <div class="max-w-container-max mx-auto px-gutter">
+        <div class="text-center mb-10">
+            <span class="text-secondary font-label-md uppercase tracking-widest mb-3 block">The People</span>
+            <h2 class="font-headline-lg text-primary">Our Consulting Team</h2>
+            <p class="text-on-surface-variant max-w-xl mx-auto mt-3">A diverse bench of associate consultants with a combined 200+ years of experience.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-outline-variant/10 ambient-shadow overflow-hidden grid grid-cols-1 md:grid-cols-[280px_1fr] mb-10">
+            <div class="h-64 md:h-full bg-surface-container">
+                <img src="images/management.png" alt="Alex Musau, Team Leader" class="w-full h-full object-cover"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';">
+            </div>
+            <div class="p-8 flex flex-col justify-center">
+                <span class="text-secondary font-label-md uppercase tracking-widest mb-2 block text-xs">Company Management</span>
+                <h3 class="font-headline-md text-2xl mb-1">Alex Musau</h3>
+                <p class="text-sm uppercase tracking-widest text-primary font-bold mb-4">Team Leader</p>
+                <p class="text-on-surface-variant font-body-md">Leads the firm's Training &amp; Capacity Building, Talent Search, HR Advisory, Consultancy and Outsourcing practice — steering a team with a combined 200+ years of consulting experience across Kenya's public, private and NGO sectors.</p>
+            </div>
+        </div>
+
+        <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact" class="py-section-desktop relative overflow-hidden">
+    <div class="absolute inset-0 bg-primary-container"></div>
+    <div class="relative z-10 max-w-container-max mx-auto px-gutter text-white">
+        <div class="text-center mb-12">
+            <h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg mb-4">Ready to Elevate Your Organization?</h2>
+            <p class="text-on-primary-container font-body-lg max-w-2xl mx-auto">Join the ranks of high-performing Kenyan companies that prioritize talent development and strategic excellence.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div class="space-y-5">
+                <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-secondary-fixed mt-1">location_on</span>
+                    <div>
+                        <p class="font-semibold">Head Office</p>
+                        <p class="text-on-primary-container text-sm">Oil Libya Plaza, Muthaiga, Nairobi · P.O. Box 76883-00620</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-secondary-fixed mt-1">mail</span>
+                    <div>
+                        <p class="font-semibold">Email</p>
+                        <p class="text-on-primary-container text-sm">info@esquireconsultants.com</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-secondary-fixed mt-1">verified</span>
+                    <div>
+                        <p class="font-semibold">Accreditation</p>
+                        <p class="text-on-primary-container text-sm">NITA Accredited Provider, Ref NITA/TRN/2632</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 pt-2">
+                    <button onclick="jump('home')" class="bg-secondary text-on-secondary px-6 py-3 rounded font-label-md text-sm hover:shadow-lg transition-all active:scale-95">Back to Top</button>
+                    <a href="https://wa.me/254700000000" target="_blank" class="bg-white/10 border border-white/30 px-6 py-3 rounded font-label-md text-sm backdrop-blur-sm hover:bg-white/20 transition-all">Chat on WhatsApp</a>
+                </div>
+            </div>
+            <form class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 space-y-4" onsubmit="event.preventDefault();">
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-on-primary-container">Full Name</label>
+                    <input class="w-full mt-1 bg-white/90 rounded px-4 py-2 text-on-background" placeholder="Jane Mwangi" type="text">
+                </div>
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-on-primary-container">Organization</label>
+                    <input class="w-full mt-1 bg-white/90 rounded px-4 py-2 text-on-background" placeholder="Your organization" type="text">
+                </div>
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-on-primary-container">How can we help?</label>
+                    <textarea class="w-full mt-1 bg-white/90 rounded px-4 py-2 text-on-background" placeholder="Tell us about your training or advisory needs" rows="3"></textarea>
+                </div>
+                <button class="w-full bg-secondary text-on-secondary py-3 rounded font-label-md hover:opacity-90 active:scale-95 transition-all">Request a Consultation</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-section-desktop px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-base bg-on-background text-surface-variant">
+    <div class="col-span-1 md:col-span-1">
+        <h3 class="font-headline-lg text-headline-lg font-black text-surface mb-6">Esquire Consultants</h3>
+        <p class="text-on-surface-variant font-body-md mb-6 leading-relaxed">The Quest to Make a Distinction. Leading HR and Training consultancy in East Africa.</p>
+    </div>
+    <div>
+        <h4 class="font-label-md uppercase tracking-widest text-white mb-6">Office Location</h4>
+        <ul class="space-y-4">
+            <li class="text-surface-variant">P.O. Box 76883-00620</li>
+            <li class="text-surface-variant">Oil Libya Plaza Muthaiga, Nairobi</li>
+            <li class="text-secondary-fixed">info@esquireconsultants.com</li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="font-label-md uppercase tracking-widest text-white mb-6">Expertise</h4>
+        <ul class="space-y-4">
+            <li><a class="text-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer" onclick="jump('services')">Training &amp; Capacity Building</a></li>
+            <li><a class="text-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer" onclick="jump('services')">HR Advisory</a></li>
+            <li><a class="text-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer" onclick="jump('clients')">Leadership &amp; Governance</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4 class="font-label-md uppercase tracking-widest text-white mb-6">Resources</h4>
+        <ul class="space-y-4">
+            <li><a class="text-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer" onclick="jump('team')">Our Team</a></li>
+            <li><a class="text-surface-variant hover:text-secondary-fixed transition-colors cursor-pointer" onclick="jump('contact')">Contact Support</a></li>
+        </ul>
+    </div>
+    <div class="col-span-1 md:col-span-4 pt-12 mt-12 border-t border-surface-variant/10 text-center">
+        <p class="font-caption text-surface-variant/50">© 2026 Esquire Consultants. All Rights Reserved. NITA Accredited Provider.</p>
+    </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a class="fixed bottom-gutter right-gutter w-16 h-16 bg-whatsapp-green text-white rounded-full flex items-center justify-center shadow-lg z-[60] hover:scale-110 active:scale-95 transition-all" href="https://wa.me/254725950092" target="_blank">
+    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">chat</span>
+</a>
+
+<script>
+    // ---------- HERO SLIDER ----------
+    const heroSlides = [
+        { local: 'images/hero-1.jpg', fallback: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80' },
+        { local: 'images/hero-2.jpg', fallback: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80' },
+        { local: 'images/hero-3.jpg', fallback: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80' },
+    ];
+    const heroSliderEl = document.getElementById('hero-slider');
+    const heroDotsEl = document.getElementById('hero-dots');
+    let heroIndex = 0;
+
+    function loadWithFallback(local, fallback, onReady) {
+        const test = new Image();
+        test.onload = () => onReady(local);
+        test.onerror = () => onReady(fallback);
+        test.src = local;
+    }
+
+    heroSlides.forEach((slide, i) => {
+        const div = document.createElement('div');
+        div.className = 'hero-slide' + (i === 0 ? ' active' : '');
+        heroSliderEl.appendChild(div);
+        loadWithFallback(slide.local, slide.fallback, (src) => { div.style.backgroundImage = `url('${src}')`; });
+
+        heroDotsEl.insertAdjacentHTML('beforeend', `<span class="hero-dot${i === 0 ? ' active' : ''}" data-i="${i}"></span>`);
+    });
+
+    function showHeroSlide(i) {
+        document.querySelectorAll('.hero-slide').forEach((s, idx) => s.classList.toggle('active', idx === i));
+        document.querySelectorAll('.hero-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+        heroIndex = i;
+    }
+    document.querySelectorAll('.hero-dot').forEach(dot => {
+        dot.addEventListener('click', () => showHeroSlide(parseInt(dot.dataset.i)));
+    });
+    setInterval(() => showHeroSlide((heroIndex + 1) % heroSlides.length), 5000);
+
+    // ---------- DATA ----------
+    const serviceBuffet = [
+        {icon:'travel_explore', label:'Surveys & Research'},
+        {icon:'work_history', label:'Career Advisory & Coaching'},
+        {icon:'calculate', label:'Accounting & Financial Management'},
+        {icon:'trending_up', label:'Sales Management & Revenue Generation'},
+        {icon:'campaign', label:'Resource Mobilization, Grants & Advocacy'},
+        {icon:'shield', label:'Risk Management, Compliance & Audit'},
+        {icon:'balance', label:'Gender Mainstreaming, ESG & Anti-Harassment'},
+        {icon:'health_and_safety', label:'Fire, Health & Safety (OSH) and IT Training'},
+    ];
+
+    const streams = [
+        { name: 'Leadership & Governance', topics: ['Strategic Leadership Development','Governance and Stewardship','Leading for Results','Next Generation Leadership','Senior Leadership Development','Future Proof Leadership Development'] },
+        { name: 'Culture & Change', topics: ['Navigating Change Effectively','Technology and Change','Culture and Strategy Alignment','Change and Transformation','Leading Change Effectively','Innovation Management'] },
+        { name: 'Personal Effectiveness', topics: ['Time Management & Prioritization','Communication and Presentation','Negotiation and Conflict Management','Emotional Intelligence (EQ) Skills','Mental Health & Work Life Balance','Strategic Thinking Skills','Soft Skills for Interpersonal Interaction'] },
+        { name: 'Supervisory & Management', topics: ['Managing for Results','Supervisory Skills Development','Managing Diversity','Managing Across Generations','Performance Management and Appraisals','Team Coaching and Mentorship','Managing Cross-Cutting Issues'] },
+        { name: 'Accounting & Finance', topics: ['Finance for Non-Finance Skills','Financial Reporting Best Practices','IFRS and IPSAS Implementation','Financial Technology (FinTech)','Audit and Taxation Refresher','Incorporating ESG in Financial Reporting'] },
+        { name: 'Customer Service Excellence', topics: ['CXW – Customer Experience Wow!','Customer Journey Management','Customer Recovery Mechanisms','Customer Relationship Management (CRM)','Customer Service Culture Development','Managing Remote Customer Service','Internal Customer Service Excellence'] },
+        { name: 'Industrial & Labour Relations', topics: ['Labour Law for Supervisors','HR for Non-HR Skills','Managing the Psychological Contract','Employee Relations Compliance','Staff Lifecycle Management','Managing Employee Welfare'] },
+        { name: 'Sales Management', topics: ['Sales Prospecting Skills','Sales Forecasting Skills','Digital Marketing Skills','Sales Team Leadership','Sales Strategy and Planning','Selling Across Borders'] },
+    ];
+
+    const sectorsA = ['County Governments','Parastatals','Regulatory Bodies','International NGOs','Community Development NGOs','Public Universities'];
+    const sectorsB = ['FMCGs','Banking & Finance','Insurance','Manufacturing','Agribusinesses','Construction'];
+
+    const team = [
+        { name:'Alex Musau', role:'Team Leader', focus:'Training & Capacity Building, Talent Search, HR Advisory, Consultancy & Outsourcing', lead:true },
+        { name:'Oscar Langat', role:'Associate Consultant', focus:'Training & Capacity Building, Leadership & Governance' },
+        { name:'Pauline Maina', role:'Associate Consultant', focus:'Leadership and Governance, Training and Capacity Building' },
+        { name:'Marc Voi Chiuli', role:'Associate Consultant', focus:'Talent Search, HR Advisory & Culture, Consultancy' },
+        { name:'Forez Kamanu', role:'Associate Consultant', focus:'Training, HR Advisory, Leadership, Surveys' },
+        { name:'Anyango Nyamori', role:'Associate Consultant', focus:'Training & Capacity Building, Leadership & Governance, Gender Grants, Advocacy' },
+        { name:'Peter Ndichu Mwayonga', role:'Associate Consultant & Facilitator', focus:'Team Building' },
+        { name:"CPA Joseph Kingo'ri", role:'Associate Consultant', focus:'Financial Management, Risk Management, Taxation, Audit and Compliance' },
+        { name:'Ken Oyugi', role:'Associate Consultant', focus:'Personal Development, Customer Service, Sales and Marketing' },
+        { name:'Amy Sironka', role:'Associate Consultant', focus:'Lobbying and Advocacy, Gender and Related Areas' },
+        { name:'CPA Dorcas Vaati', role:'Associate Consultant', focus:'Strategy & Planning, Change Management, Strategic Finance & Taxation' },
+        { name:'Antony Mwaniki', role:'Associate Consultant', focus:'Occupational Safety and Health, Fire Safety and Risk Assessment' },
+    ];
+
+    // ---------- RENDER ----------
+    const serviceGrid = document.getElementById('service-grid');
+    serviceBuffet.forEach(s => {
+        serviceGrid.insertAdjacentHTML('beforeend', `
+            <div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/10 hover-lift flex flex-col gap-2">
+                <span class="material-symbols-outlined text-primary">${s.icon}</span>
+                <p class="text-sm font-medium text-on-surface-variant leading-snug">${s.label}</p>
+            </div>`);
+    });
+
+    const streamTabs = document.getElementById('stream-tabs');
+    const streamPanel = document.getElementById('stream-panel');
+    function renderStream(i) {
+        document.querySelectorAll('.tab-btn').forEach((b, idx) => b.classList.toggle('active', idx === i));
+        streamPanel.innerHTML = `
+            <h3 class="font-headline-md text-primary mb-4">${streams[i].name}</h3>
+            <div class="flex flex-wrap gap-2">
+                ${streams[i].topics.map(t => `<span class="px-3 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-medium">${t}</span>`).join('')}
+            </div>`;
+    }
+    streams.forEach((s, i) => {
+        streamTabs.insertAdjacentHTML('beforeend', `
+            <button class="tab-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-outline-variant/20 text-sm font-semibold text-on-surface-variant transition-all" onclick="renderStream(${i})">
+                ${s.name} <span class="tab-count text-xs bg-primary/10 text-primary rounded-full px-2 py-0.5">${s.topics.length}</span>
+            </button>`);
+    });
+    renderStream(0);
+
+    function fillMarquee(elId, arr) {
+        const el = document.getElementById(elId);
+        [...arr, ...arr].forEach(s => {
+            el.insertAdjacentHTML('beforeend', `<span class="px-5 py-3 bg-surface-container-low border border-outline-variant/15 rounded-full text-sm font-semibold text-on-surface-variant whitespace-nowrap">${s}</span>`);
+        });
+    }
+    fillMarquee('sector-marquee-1', sectorsA);
+    fillMarquee('sector-marquee-2', sectorsB);
+
+    const teamGrid = document.getElementById('team-grid');
+    function slugify(name) {
+        return name.replace(/^CPA\s/i, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    team.filter(m => !m.lead).forEach(m => {
+        const initials = m.name.replace(/^(CPA)\s/, '').split(' ').map(w => w[0]).slice(0,2).join('');
+        const photoPath = `images/team/${slugify(m.name)}.jpg`;
+        teamGrid.insertAdjacentHTML('beforeend', `
+            <div class="bg-white rounded-xl p-5 border border-outline-variant/10 flex gap-4 items-start">
+                <div class="relative w-12 h-12 shrink-0">
+                    <img src="${photoPath}" alt="${m.name}" class="w-12 h-12 rounded-full object-cover"
+                         onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden');">
+                    <div class="hidden absolute inset-0 rounded-full bg-primary text-white flex items-center justify-center font-bold">${initials}</div>
+                </div>
+                <div>
+                    <p class="font-headline-md text-base leading-tight">${m.name}</p>
+                    <p class="text-xs uppercase tracking-widest text-secondary font-bold mb-2">${m.role}</p>
+                    <p class="text-sm text-on-surface-variant">${m.focus}</p>
+                </div>
+            </div>`);
+    });
+    console.log('Team photo filenames expected in /images/team/:', team.filter(m => !m.lead).map(m => slugify(m.name) + '.jpg'));
+
+    // ---------- NAV: plain, reliable smooth scroll ----------
+    function jump(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('mobilenav').classList.add('hidden');
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => jump(link.dataset.target));
+    });
+
+    // highlight the current section in the nav as you scroll
+    const sections = ['home','about','services','training','clients','team','contact'].map(id => document.getElementById(id));
+    function updateActiveNav() {
+        let current = sections[0];
+        sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 120) current = s; });
+        document.querySelectorAll('.nav-link').forEach(l => {
+            l.classList.toggle('active', current && l.dataset.target === current.id);
+        });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+</script>
+</body>
+</html>
